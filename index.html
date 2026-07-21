@@ -345,6 +345,7 @@
       justify-content: center;
       margin: 15px 0;
       padding: 10px;
+      transition: opacity 0.3s ease;
     }
 
     .action-btn {
@@ -533,7 +534,7 @@
     }
 
     /* =========================================================
-       11. GALERIA COM AS FOTOS
+       11. GALERIA DE FOTOS
        ========================================================= */
     .her-gallery {
       display: grid;
@@ -595,7 +596,7 @@
     }
 
     .rain-btn:hover {
-      scale: 1.06;
+      transform: scale(1.06);
       box-shadow: 0 0 35px rgba(0, 210, 255, 0.8);
     }
 
@@ -747,7 +748,7 @@
       </div>
       <div class="card">
         <h3>🧚‍♀️ Tinker Bell & Desenhos</h3>
-        <p>Seu gosto mágico e fofo por **Tinker Bell** e pelo clássico **Looney Tunes** me faz te achar ainda mais graciosa.</p>
+        <p>Seu gosto mágico e fofo por <strong>Tinker Bell</strong> e pelo clássico <strong>Looney Tunes</strong> me faz te achar ainda mais graciosa.</p>
       </div>
       <div class="card">
         <h3>🧛‍♂️ Diários de um Vampiro</h3>
@@ -755,7 +756,7 @@
       </div>
       <div class="card">
         <h3>🍕 Comidinhas Favoritas</h3>
-        <p>Fã incondicional de **pizza**, **maracujá** e **chocolate branco**.</p>
+        <p>Fã incondicional de <strong>pizza</strong>, <strong>maracujá</strong> e <strong>chocolate branco</strong>.</p>
       </div>
       <div class="card">
         <h3>👩‍🍳 Chefinha nas Receitas</h3>
@@ -763,7 +764,7 @@
       </div>
       <div class="card">
         <h3>💎 Brilho da Prata</h3>
-        <p>Seus **acessórios de prata** dão aquele toque de elegância único que combina perfeitamente com você.</p>
+        <p>Seus <strong>acessórios de prata</strong> dão aquele toque de elegância único que combina perfeitamente com você.</p>
       </div>
       <div class="card">
         <h3>👶 Carinho com Crianças</h3>
@@ -822,27 +823,27 @@
 
     <div class="her-gallery">
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_926.jpg" alt="A garota mais linda">
+        <img class="her-img" src="1000064418.jpg" alt="A garota mais linda">
         <div class="her-caption">O sorriso que ilumina os meus dias ✨</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_927.jpg" alt="Seu estilo impecável">
+        <img class="her-img" src="1000064419.jpg" alt="Seu estilo impecável">
         <div class="her-caption">Perfeita em cada detalhe 💙</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_930.jpg" alt="Seu jeito único">
+        <img class="her-img" src="1000064420.jpg" alt="Seu jeito único">
         <div class="her-caption">A dona do meu coração 👑</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_931.jpg" alt="Momento especial">
+        <img class="her-img" src="1000064421.jpg" alt="Momento especial">
         <div class="her-caption">Cada segundo ao seu lado é inesquecível 🥰</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_935.jpg" alt="Minha pessoa favorita">
+        <img class="her-img" src="1000064422.jpg" alt="Minha pessoa favorita">
         <div class="her-caption">Meu olhar favorito no mundo inteiro 🌸</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="SUA_SEXTA_FOTO.jpg" alt="A garota mais incrível">
+        <img class="her-img" src="1000064423.jpg" alt="A garota mais incrível">
         <div class="her-caption">Com você tudo fica mais bonito 💎</div>
       </div>
     </div>
@@ -969,6 +970,10 @@
     function initGame() {
       const grid = document.getElementById('gameGrid');
       grid.innerHTML = '';
+      matchedPairs = 0;
+      flippedCards = [];
+      document.getElementById('gameMessage').innerText = '';
+      
       shuffle(gameCards).forEach((icon, index) => {
         const card = document.createElement('div');
         card.classList.add('game-card');
@@ -1000,8 +1005,9 @@
         card2.classList.add('matched');
         matchedPairs++;
         flippedCards = [];
+
         if (matchedPairs === icons.length) {
-          document.getElementById('gameMessage').innerText = '🎉 Você venceu! Meu amor por você é inigualável! 💙';
+          document.getElementById('gameMessage').innerText = 'Parabéns, meu amor! Você venceu! 🎉💙';
         }
       } else {
         setTimeout(() => {
@@ -1013,24 +1019,23 @@
         }, 800);
       }
     }
-
     initGame();
 
-    // Quiz
+    // Quiz do Casal
     function answerQuiz(isCorrect) {
       const feedback = document.getElementById('quizFeedback');
       if (isCorrect) {
-        feedback.style.color = '#00d2ff';
-        feedback.innerText = '✨ Resposta certa! O nosso primeiro beijo inesquecível! 💋';
+        feedback.innerText = "Exatamente! Nosso beijo inesquecível em 2026! 💋💙";
+        feedback.style.color = "#00d2ff";
       } else {
-        feedback.style.color = '#ff6b6b';
-        feedback.innerText = '❌ Ops! Tente de novo, você sabe a resposta! 😉';
+        feedback.innerText = "Ops! Tente novamente, essa não é a melhor memória de 2026! 😜";
+        feedback.style.color = "#ff6b6b";
       }
     }
 
     // Chuva de Emojis
     function soltarChuva() {
-      const emojis = ['💙', '✨', '👑', '💋', '🍕', '🧚‍♀️', '💎', '🌸'];
+      const emojis = ['💙', '✨', '👑', '🌸', '🍕', '🧚‍♀️', '💋', '💎'];
       for (let i = 0; i < 35; i++) {
         setTimeout(() => {
           const particle = document.createElement('div');
