@@ -533,7 +533,7 @@
     }
 
     /* =========================================================
-       11. GALERIA DE FOTOS (TODAS AS 6 IMAGENS)
+       11. GALERIA DE FOTOS (5 ESPAÇOS AJUSTADOS)
        ========================================================= */
     .her-gallery {
       display: grid;
@@ -822,28 +822,24 @@
 
     <div class="her-gallery">
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_926.jpg" alt="Foto 1" loading="lazy">
+        <img class="her-img" src="IMG_20260720_193041_926.jpg" alt="Foto 1">
         <div class="her-caption">O sorriso que ilumina os meus dias ✨</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_927.jpg" alt="Foto 2" loading="lazy">
+        <img class="her-img" src="IMG_20260720_193041_927.jpg" alt="Foto 2">
         <div class="her-caption">Perfeita em cada detalhe 💙</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_930.jpg" alt="Foto 3" loading="lazy">
+        <img class="her-img" src="IMG_20260720_193041_930.jpg" alt="Foto 3">
         <div class="her-caption">A dona do meu coração 👑</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_931.jpg" alt="Foto 4" loading="lazy">
+        <img class="her-img" src="IMG_20260720_193041_931.jpg" alt="Foto 4">
         <div class="her-caption">Cada segundo ao seu lado é inesquecível 🥰</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_935.jpg" alt="Foto 5" loading="lazy">
+        <img class="her-img" src="IMG_20260720_193041_935.jpg" alt="Foto 5">
         <div class="her-caption">Meu olhar favorito no mundo inteiro 🌸</div>
-      </div>
-      <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_953.jpg" alt="Foto 6" loading="lazy">
-        <div class="her-caption">Com você tudo fica mais bonito 💎</div>
       </div>
     </div>
 
@@ -897,24 +893,26 @@
     }
     drawStars();
 
-    // Cronômetro
-    const startDate = new Date("2022-07-01T00:00:00");
+    // Cronômetro Corrigido e Contínuo
+    const startDate = new Date("2022-07-01T00:00:00").getTime();
 
     function updateTimer() {
-      const now = new Date();
+      const now = new Date().getTime();
       const diff = now - startDate;
 
-      const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-      const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      if (diff > 0) {
+        const secondsVal = Math.floor((diff / 1000) % 60);
+        const minutesVal = Math.floor((diff / (1000 * 60)) % 60);
+        const hoursVal = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const daysVal = Math.floor((diff / (1000 * 60 * 60 * 24)) % 365.25);
+        const yearsVal = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
 
-      document.getElementById("years").innerText = years;
-      document.getElementById("days").innerText = days;
-      document.getElementById("hours").innerText = hours;
-      document.getElementById("minutes").innerText = minutes;
-      document.getElementById("seconds").innerText = seconds;
+        document.getElementById("years").innerText = yearsVal;
+        document.getElementById("days").innerText = daysVal;
+        document.getElementById("hours").innerText = hoursVal;
+        document.getElementById("minutes").innerText = minutesVal;
+        document.getElementById("seconds").innerText = secondsVal;
+      }
     }
     setInterval(updateTimer, 1000);
     updateTimer();
