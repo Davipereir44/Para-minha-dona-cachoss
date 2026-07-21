@@ -533,7 +533,7 @@
     }
 
     /* =========================================================
-       11. SEÇÃO EXCLUSIVA DELA (SUBSTITUI O MURAL DE RECORDAÇÕES)
+       11. GALERIA COM AS FOTOS
        ========================================================= */
     .her-gallery {
       display: grid;
@@ -702,7 +702,7 @@
     <div id="carta2" class="modal">
       <div class="modal-content">
         <h3>De 2022 ao Primeiro Beijo... ⏳💋</h3>
-        <p>Olhar para trás e ver toda a nossa trajetória é uma das minhas coisas favoritas. Em 2022, a gente brincava como duas crianças, sem nem imaginar o lindo futuro que nos esperava. Passamos por momentos em que ainda brincávamos em 2023, nos reaproximamos para valer em 2024, e em 2025 nossas conversas no celular eram o ponto alto de todos os meus dias.<br><br>Até que chegou 2026... e aquel primeiro beijo foi simplesmente inesquecível! Ficou gravado no meu coração para sempre. Obrigado por ser minha companheira desde a infância e o meu grande amor de hoje.</p>
+        <p>Olhar para trás e ver toda a nossa trajetória é uma das minhas coisas favoritas. Em 2022, a gente brincava como duas crianças, sem nem imaginar o lindo futuro que nos esperava. Passamos por momentos em que ainda brincávamos em 2023, nos reaproximamos para valer em 2024, e em 2025 nossas conversas no celular eram o ponto alto de todos os meus dias.<br><br>Até que chegou 2026... e aquele primeiro beijo foi simplesmente inesquecível! Ficou gravado no meu coração para sempre. Obrigado por ser minha companheira desde a infância e o meu grande amor de hoje.</p>
         <button class="close-btn" onclick="closeModal('carta2')">Fechar Cartinha 💙</button>
       </div>
     </div>
@@ -842,7 +842,7 @@
         <div class="her-caption">Meu olhar favorito no mundo inteiro 🌸</div>
       </div>
       <div class="her-card">
-        <img class="her-img" src="IMG_20260720_193041_953.jpg" alt="A garota mais incrível">
+        <img class="her-img" src="SUA_SEXTA_FOTO.jpg" alt="A garota mais incrível">
         <div class="her-caption">Com você tudo fica mais bonito 💎</div>
       </div>
     </div>
@@ -897,7 +897,7 @@
     }
     drawStars();
 
-    // Cronômetro (Desde meio de 2022)
+    // Cronômetro
     const startDate = new Date("2022-07-01T00:00:00");
 
     function updateTimer() {
@@ -1001,8 +1001,7 @@
         matchedPairs++;
         flippedCards = [];
         if (matchedPairs === icons.length) {
-          document.getElementById('gameMessage').innerText = '🎉 Parabéns, Nega! Você venceu o jogo!';
-          soltarChuva();
+          document.getElementById('gameMessage').innerText = '🎉 Você venceu! Meu amor por você é inigualável! 💙';
         }
       } else {
         setTimeout(() => {
@@ -1014,33 +1013,37 @@
         }, 800);
       }
     }
+
     initGame();
 
     // Quiz
     function answerQuiz(isCorrect) {
       const feedback = document.getElementById('quizFeedback');
       if (isCorrect) {
-        feedback.innerText = "✨ Acertou, meu amor! Aquele beijo foi inesquecível mesmo! 💋💙";
-        soltarChuva();
+        feedback.style.color = '#00d2ff';
+        feedback.innerText = '✨ Resposta certa! O nosso primeiro beijo inesquecível! 💋';
       } else {
-        feedback.innerText = "Tente de novo! Dica: foi o momento mais marcante de 2026 😉";
+        feedback.style.color = '#ff6b6b';
+        feedback.innerText = '❌ Ops! Tente de novo, você sabe a resposta! 😉';
       }
     }
 
     // Chuva de Emojis
     function soltarChuva() {
-      const emojis = ['💙', '✨', '🧚‍♀️', '🍕', '🍫', '💋', '🌸', '👑', '👩‍🦱', '💎'];
-      for (let i = 0; i < 40; i++) {
+      const emojis = ['💙', '✨', '👑', '💋', '🍕', '🧚‍♀️', '💎', '🌸'];
+      for (let i = 0; i < 35; i++) {
         setTimeout(() => {
-          const emoji = document.createElement('div');
-          emoji.classList.add('emoji-particle');
-          emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-          emoji.style.left = Math.random() * 95 + 'vw';
-          emoji.style.animationDuration = (Math.random() * 2 + 3) + 's';
-          document.body.appendChild(emoji);
+          const particle = document.createElement('div');
+          particle.classList.add('emoji-particle');
+          particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+          particle.style.left = Math.random() * 100 + 'vw';
+          particle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+          document.body.appendChild(particle);
 
-          setTimeout(() => { emoji.remove(); }, 4200);
-        }, i * 90);
+          setTimeout(() => {
+            particle.remove();
+          }, 4500);
+        }, i * 120);
       }
     }
   </script>
